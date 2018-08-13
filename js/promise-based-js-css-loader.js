@@ -5,9 +5,13 @@ let warningMessage = function(text) {
 }
 
 function addResources(resourceURIs) {
-	if (!resourceURIs.isArray() && (typeof(resourceURIs) != "string")) {
+	if (!("length" in resourceURIs)) {
 		warningMessage("Resource URIs must be an array or a string");
 		return new Promise(function(resolve, reject) { reject(); });
+	}
+
+	if (!resourceURIs.length) {
+		return new Promise(function(resolve, reject) { resolve(); });
 	}
 
 	if (typeof(resourceURIs) === "string") {
