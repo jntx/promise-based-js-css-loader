@@ -21,8 +21,8 @@ function addResources(resourceURIs) {
 	let promises = [];
 
 	for (var index in resourceURIs) {
-		let isJS = /^.+\.js$/.test(resourceURIs);
-		let isCSS = /^.+\.css$/.test(resourceURIs);
+		let isJS = /^.+\.js$/.test(resourceURIs[index]);
+		let isCSS = /^.+\.css$/.test(resourceURIs[index]);
 		let isSupportedResource = isJS || isCSS;
 
 		if (isSupportedResource) {
@@ -35,7 +35,7 @@ function addResources(resourceURIs) {
 				} else if (isCSS) {
 					resource.type = "text/css";
 					resource.rel = "stylesheet";
-					resource.href = resourceURI;
+					resource.href = resourceURIs[index];
 				}
 
 				resource.addEventListener("load", () => { resolve(); } );
