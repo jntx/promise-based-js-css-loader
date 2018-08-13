@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Promise based JS CSS Loader - Example usage file</title>
+	</head>
+	<script type="text/javascript" src="../js/promise-based-js-css-loader.js"></script>
+<body>
+	<div class="paragraph">In this example shows how to chain the addResources Promises together in order to get a predictable loading of the files. Check the browser console to find which one is loaded (and executed) first.</div>
+	
+	<script type="text/javascript">
+		addResources([
+			"css/example.css",
+			"js/first.js"
+		]).then(
+			response => {
+				// CSS file loaded, setup code for first.js or callback
+				console.log("DONE LOADING CSS AND FIRST.JS");
+				return addResources("js/second.js");
+		}).then(
+			response => {
+				// Setup code for second.js or callback
+				console.log("DONE LOADING SECOND.JS");
+				return addResources("js/third.js");
+		}).then(response => {
+			// Setup code for third.js or for all loaded scripts
+			console.log("DONE LOADING THIRD.JS");
+			console.log("FINISH");
+		}).catch(error => console.log(error));
+	</script>
+</body>
+</html> 

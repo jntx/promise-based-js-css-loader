@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Promise based JS CSS Loader - Example usage file</title>
+	</head>
+	<script type="text/javascript" src="../js/promise-based-js-css-loader.js"></script>
+<body>
+	<div class="paragraph">In this example shows how the resources are loaded. Check the browser console to find which one is loaded (and executed) first.</div>
+	<div class="paragraph">If you reload the page (with or without cleaning the cache) you probably find different loading sequences.<br/>To get a specific loading sequence you have to chain the addResources Promise together: <a href="example-ordered.html">see this example</a></div>
+	<script type="text/javascript">
+		addResources([
+			"css/example.css",
+			"js/first.js",
+			"js/second.js",
+			"js/third.js"
+		]).then(response => {
+			// Setup code for loaded scripts or callback code
+			console.log("DONE");
+		}).catch(error => console.log(error));
+	</script>
+</body>
+</html> 
