@@ -23,7 +23,7 @@ function addResources(resourceURIs) {
 
 		if (isSupportedResource) {
 			promises.push(new Promise(function(resolve, reject) {
-				let resource = document.createElement(isJS ? "script", "link");
+				let resource = document.createElement(isJS ? "script" : "link");
 			
 				if (isJS) {
 					resource.type = "text/javascript";
